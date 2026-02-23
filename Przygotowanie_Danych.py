@@ -14,12 +14,13 @@ data = data[columns]
 
 
 
-x_num = data[['R', 'SC', 'AMP', 'MB', 'SMF',
-              'CEY', 'AS','NOR', 'SQS', 'PA',
-               'WENDR', 'WDAYR', 'Rev2' ]]
+x_num = data[['R', 'SC', 'AMP',
+              'CEY', 'AS', 'SQS', 'PA',
+               'WENDR', 'WDAYR' ]]
 
 
 x_text = pd.get_dummies(data['Location'],drop_first=True)
 
 x = pd.concat([x_num, x_text], axis = 1)
+x = x.drop("Good_loc",axis = 1)
 y = data['Revenue'].apply(log)

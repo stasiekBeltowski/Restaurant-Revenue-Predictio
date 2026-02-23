@@ -3,6 +3,12 @@ import pandas as pd
 from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error, mean_absolute_percentage_error
 from numpy import sqrt
 
+'''
+#Relacja Miedzy AMP a Location
+correlation = x_train[['Good_loc', 'AMP', 'SC']].corr()
+print(correlation)
+'''
+
 #Moc zmiennych niezależnych
 importance = pd.DataFrame({
     'Feature': x_train.columns,
