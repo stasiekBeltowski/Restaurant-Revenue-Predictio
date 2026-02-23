@@ -1,9 +1,9 @@
 from Funkcje_Pomocnicze import location, cuisine, parking
 import pandas as pd 
-
+from numpy import log
 data = pd.read_csv("restaurant_data2.csv")
 
-#Dane Kategoryczne 2
+#Dane Kategoryczne 
 data["PA"] = data['PA'].apply(parking)
 data['Location'] = data["Location"].apply(location)
 data['Rev2'] = (data['R'] * data['NOR'])/data['SMF']
@@ -22,4 +22,4 @@ x_num = data[['R', 'SC', 'AMP', 'MB', 'SMF',
 x_text = pd.get_dummies(data['Location'],drop_first=True)
 
 x = pd.concat([x_num, x_text], axis = 1)
-y = data['Revenue']
+y = data['Revenue'].apply(log)
